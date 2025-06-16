@@ -7,7 +7,7 @@ from secrets import CONFIG
 
 # Configuration
 DEMO = True
-LOCATION = 'HOME'
+LOCATION = 'REMOTE' # HOME or REMOTE
 
 cfg = CONFIG[LOCATION]
 
@@ -18,7 +18,7 @@ MQTT_PORT = cfg['MQTT_PORT']
 MQTT_PASSWORD = cfg['MQTT_PASSWORD']
 SLEEP_TIME = cfg['SLEEP_TIME']
 
-MQTT_TOPIC = 'szenzor/dht22'
+MQTT_TOPIC = 'custom_sensor/dht22'
 MQTT_USER = 'ha'
 CLIENT_ID = 'pico_client'
 
