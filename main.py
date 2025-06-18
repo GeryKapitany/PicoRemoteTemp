@@ -6,8 +6,9 @@ from umqtt_simple import MQTTClient
 from secrets import CONFIG
 
 # Configuration
-DEMO = True
-LOCATION = 'REMOTE' # HOME or REMOTE
+DEMO = False
+LED_ON = False
+LOCATION = 'HOME' # HOME or REMOTE
 
 cfg = CONFIG[LOCATION]
 
@@ -134,14 +135,16 @@ def main():
             first_publish = False
 
         try:
-            pin.toggle()
+            if LED_ON:
+                pin.toggle()
             sensor.measure()
             temp = sensor.temperature()
             hum = sensor.humidity()
             msg = '{{"temperature": {:.1f}, "humidity": {:.1f}}}'.format(temp, hum)
             print("Measuring:", msg)
             client.publish(MQTT_TOPIC, msg)
-            pin.toggle()
+            if LED_ON:
+                pin.toggle()
         except Exception as e:
             print("Sensor ERROR:", e)
 
