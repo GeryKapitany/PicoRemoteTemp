@@ -106,7 +106,7 @@ def publish_discovery(client):
     
     print("HA autodiscovery configuration sent")
 
-# --- Fő működés ---
+# --- Core function ---
 def main():
     first_publish = True
 
@@ -154,7 +154,7 @@ def main():
                 wlan.disconnect()
                 first_publish = True
             except Exception as e:
-                print("Kapcsolat bontási hiba:", e)
+                print("Disconnect error:", e)
 
         if DEMO:
             client.disconnect()
